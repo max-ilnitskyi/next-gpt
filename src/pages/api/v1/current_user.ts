@@ -1,18 +1,19 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-// import { User } from '@/api/models/user/user.entity';
-import { AppDataSource } from '@/api/database/data-source';
+import { User } from '@/api/models/user/user.entity';
+import { UserService } from '@/api/models/user/user.service';
 
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse,
 ) {
   if (req.method === 'GET') {
-    // const newUser = new User();
+    const newUser = new User();
 
-    // const response = await AppDataSource.manager.save(newUser);
+    newUser.name = 'anonymous';
 
-    console.log('===AppDataSource: ', AppDataSource); // temp
-    return res.json({ data: 'Hello world' });
+    const response = await UserService.create(newUser);
+
+    return res.json(response);
   } else {
     res.setHeader('Allow', ['GET']);
     res.status(405).end(`Method ${req.method} Not Allowed`);
