@@ -1,4 +1,4 @@
-@import './scss/tailwind.scss';
+@import './css/tailwind.css';
 
 #__next {
   @apply absolute inset-0 overflow-hidden;
