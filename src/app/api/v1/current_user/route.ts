@@ -1,14 +1,25 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { NextResponse } from 'next/server';
 
-import { User } from '@/server/models/user/user.entity';
-import { UserService } from '@/server/models/user/user.service';
+import { BackendAuth } from '@/server/auth/BackendAuth';
+import { processError } from '@/server/utils/exceptions/processError';
 
-export async function GET(request: NextRequest) {
-  const newUser = new User();
+export async function GET() {
+  try {
+    const { currentUserId: existingCurrentUserId } =
+      await BackendAuth.getCurrentUserId({});
 
-  newUser.name = 'anonymous';
+    let currentUserId = existingCurrentUserId;
 
-  const response = await UserService.create(newUser);
+    if (!currentUserId) {
+      const { currentUserId: newUserId } = await BackendAuth.setNewUserId();
 
-  return NextResponse.json(response);
+      currentUserId = newUserId;
+    }
+
+    const response = { id: currentUserId };
+
+    return NextResponse.json(response);
+  } catch (error) {
+    return processError({ error: error as Error });
+  }
 }
