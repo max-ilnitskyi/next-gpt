@@ -1,6 +1,6 @@
 import 'reflect-metadata';
 import { DataSource } from 'typeorm';
-import { User } from '@/api/models/user/user.entity';
+import { User } from '@/server/models/user/user.entity';
 
 class DatabaseConnection {
   static dbPromise?: Promise<DataSource>;

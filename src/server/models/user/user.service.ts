@@ -1,5 +1,5 @@
 import { User } from './user.entity';
-import DatabaseConnection from '@/api/database/connection';
+import DatabaseConnection from '@/server/database/connection';
 
 export class UserService {
   static async getRepository() {
