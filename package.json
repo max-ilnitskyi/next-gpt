@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "ts": "./node_modules/.bin/tsc"
   },
   "dependencies": {
     "classnames": "^2.5.1",
