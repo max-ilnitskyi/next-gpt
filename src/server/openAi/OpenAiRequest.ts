@@ -57,6 +57,31 @@ export class OpenAiRequest {
 
     return response;
   }
+  static async gpt4oRequest({
+    content,
+    systemContent,
+    responseFormat,
+  }: Gpt4oMiniRequestOptions) {
+    const response = await this._requestWrapper({
+      cb: () =>
+        OpenAiClient.chat.completions.create({
+          model: 'gpt-4o-2024-08-06',
+          messages: [
+            {
+              role: 'system',
+              content: systemContent || 'You are a helpful assistant.',
+            },
+            {
+              role: 'user',
+              content: content,
+            },
+          ],
+          response_format: responseFormat,
+        }),
+    });
+
+    return response;
+  }
 }
 
 export default OpenAiRequest;

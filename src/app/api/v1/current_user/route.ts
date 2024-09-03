@@ -6,7 +6,7 @@ import { processError } from '@/server/utils/exceptions/processError';
 export async function GET() {
   try {
     const { currentUserId: existingCurrentUserId } =
-      await BackendAuth.getCurrentUserId({});
+      await BackendAuth.getCurrentUserId();
 
     let currentUserId = existingCurrentUserId;
 

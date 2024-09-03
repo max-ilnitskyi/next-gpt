@@ -26,7 +26,7 @@ const responseFormat = zodResponseFormat(
 );
 
 export async function analyzeMessage(message: string) {
-  const response = await OpenAiRequest.gpt4oMiniRequest({
+  const response = await OpenAiRequest.gpt4oRequest({
     content: message,
     systemContent,
     responseFormat,

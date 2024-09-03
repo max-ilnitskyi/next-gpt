@@ -35,7 +35,7 @@ class BackendAuth {
     return jwt.sign(value, NEXT_API_SECRET);
   }
 
-  static getCurrentUserId({ required }: { required?: boolean }) {
+  static getCurrentUserId() {
     try {
       const token = this._getToken();
 
@@ -43,7 +43,23 @@ class BackendAuth {
 
       const currentUserId = payload?.id;
 
-      if (!currentUserId && required) {
+      return {
+        currentUserId,
+      };
+    } catch (err) {
+      throw new AuthorizationException(err);
+    }
+  }
+
+  static getCurrentUserIdRequired() {
+    try {
+      const token = this._getToken();
+
+      const payload = token ? this._decodeToken(token) : null;
+
+      const currentUserId = payload?.id;
+
+      if (!currentUserId) {
         throw new AuthorizationException();
       }
 

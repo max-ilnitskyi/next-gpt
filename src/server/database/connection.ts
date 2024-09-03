@@ -1,5 +1,6 @@
 import 'reflect-metadata';
 import { DataSource } from 'typeorm';
+import { Message } from '@/server/models/message/message.entity';
 import { User } from '@/server/models/user/user.entity';
 
 class DatabaseConnection {
@@ -18,7 +19,7 @@ class DatabaseConnection {
       password: process.env.DB_PASSWORD,
       database: process.env.DB_NAME,
       ssl: { rejectUnauthorized: false },
-      entities: [User],
+      entities: [Message, User],
       synchronize: true,
       logging: false,
     });
