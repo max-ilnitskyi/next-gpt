@@ -14,7 +14,7 @@ interface BackendAuthTokenPayload {
   id: number;
 }
 
-class BackendAuth {
+export class BackendAuth {
   static _getToken(): string | undefined {
     return cookies().get('access-token')?.value;
   }
@@ -96,5 +96,3 @@ class BackendAuth {
     }
   }
 }
-
-export default BackendAuth;

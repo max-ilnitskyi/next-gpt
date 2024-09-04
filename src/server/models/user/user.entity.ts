@@ -1,6 +1,6 @@
 import { Entity } from 'typeorm';
 
-import { DatabaseTables } from '@/server/database/databaseTypes';
+import { DatabaseTables } from '@/server/database/database.types';
 
 import { BaseEntity } from '@/server/database/base.entity';
 

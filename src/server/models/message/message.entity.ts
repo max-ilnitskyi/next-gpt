@@ -1,7 +1,7 @@
 import { Entity, Column, ManyToOne, JoinColumn } from 'typeorm';
 
 import { MessageTypes } from './message.types';
-import { DatabaseTables } from '@/server/database/databaseTypes';
+import { DatabaseTables } from '@/server/database/database.types';
 
 import { BaseEntity } from '@/server/database/base.entity';
 import { User } from '@/server/models/user/user.entity';

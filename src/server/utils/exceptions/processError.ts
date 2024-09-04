@@ -1,9 +1,9 @@
 import { NextResponse } from 'next/server';
 
-import { BaseException } from '../BaseException';
-import { NotFoundException } from '../NotFoundException';
-import { ServerException } from '../ServerException';
-import { AuthorizationException } from '../AuthorizationException';
+import { BaseException } from './BaseException';
+import { NotFoundException } from './NotFoundException';
+import { ServerException } from './ServerException';
+import { AuthorizationException } from './AuthorizationException';
 
 function prepareErrorResponse<T extends BaseException>(error: T) {
   return {
@@ -15,7 +15,7 @@ function prepareErrorResponse<T extends BaseException>(error: T) {
   };
 }
 
-function processError<T extends BaseException>({
+export function processError<T extends BaseException>({
   error,
 }: {
   error: T | Error;
@@ -58,5 +58,3 @@ function processError<T extends BaseException>({
     { status: 500 },
   );
 }
-
-export default processError;

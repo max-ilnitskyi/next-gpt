@@ -1,4 +1,4 @@
-class BaseException extends Error {
+export class BaseException extends Error {
   constructor(
     public statusCode: number,
     public message: string,
@@ -8,5 +8,3 @@ class BaseException extends Error {
     super(message, { cause });
   }
 }
-
-export default BaseException;
