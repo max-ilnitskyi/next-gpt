@@ -1,21 +1,21 @@
-import {
-  Entity,
-  Column,
-  PrimaryGeneratedColumn,
-  CreateDateColumn,
-} from 'typeorm';
+import { Entity, Column, ManyToOne, JoinColumn } from 'typeorm';
 
 import { MessageTypes } from './message.types';
+import { DatabaseTables } from '@/server/database/databaseTypes';
 
-@Entity('messages')
-export class Message {
-  @PrimaryGeneratedColumn()
-  id!: number;
+import { BaseEntity } from '@/server/database/base.entity';
+import { User } from '@/server/models/user/user.entity';
 
+@Entity(DatabaseTables.MESSAGES)
+export class Message extends BaseEntity {
   @Column({
     type: 'integer',
   })
   user_id!: number;
+
+  @ManyToOne(() => User)
+  @JoinColumn({ name: 'user_id' })
+  user!: User;
 
   @Column({
     type: 'text',
@@ -38,7 +38,4 @@ export class Message {
     default: MessageTypes.USER_MESSAGE,
   })
   type!: MessageTypes;
-
-  @CreateDateColumn()
-  created_at!: string;
 }

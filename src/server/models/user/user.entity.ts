@@ -1,10 +1,8 @@
-import { Entity, PrimaryGeneratedColumn, CreateDateColumn } from 'typeorm';
+import { Entity } from 'typeorm';
 
-@Entity('users')
-export class User {
-  @PrimaryGeneratedColumn()
-  id!: number;
+import { DatabaseTables } from '@/server/database/databaseTypes';
 
-  @CreateDateColumn()
-  created_at!: string;
-}
+import { BaseEntity } from '@/server/database/base.entity';
+
+@Entity(DatabaseTables.USERS)
+export class User extends BaseEntity {}
