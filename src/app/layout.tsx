@@ -21,6 +21,9 @@ export default function RootLayout({
 }>) {
   return (
     <html className="h-full" lang="en">
+      <head>
+        <link rel="icon" href="/favicon.svg" />
+      </head>
       <body className={cl('h-full relative overflow-hidden', inter.className)}>
         <AppProvider>
           <AppLayout>{children}</AppLayout>
