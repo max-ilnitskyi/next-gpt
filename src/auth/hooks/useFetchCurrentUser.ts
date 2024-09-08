@@ -1,4 +1,5 @@
-import { useQuery } from 'react-query';
+import { useCallback, useEffect } from 'react';
+import { useQuery } from '@tanstack/react-query';
 import isEmpty from 'lodash/isEmpty';
 
 import { AxiosRequestErrorType, PayloadErrorType } from '@/types';
@@ -27,26 +28,29 @@ interface UseFetchCurrentUserOptions {
 export function useFetchCurrentUser({ options }: UseFetchCurrentUserOptions) {
   const localStoragePlaceholderKey = getQueryPlaceholderKey(cacheKey);
 
-  const { data, isFetched, isLoading, error } = useQuery<CurrentUserResponse>(
-    [cacheKey],
-    async () => {
-      try {
-        const response = await ApiRequest.get<CurrentUserResponse>(
-          AuthApiPath.currentUser(),
-        );
+  const queryFn = useCallback<() => Promise<CurrentUserResponse>>(async () => {
+    try {
+      const response = await ApiRequest.get<CurrentUserResponse>(
+        AuthApiPath.currentUser(),
+      );
 
-        return response.data;
-      } catch (err) {
-        throw isEmpty(
-          (err as AxiosRequestErrorType<PayloadErrorType>)?.response?.data
-            ?.error?.fullMessages,
-        )
-          ? err
-          : (err as AxiosRequestErrorType<PayloadErrorType>)?.response?.data
-              ?.error;
-      }
-    },
-    {
+      return response.data;
+    } catch (err) {
+      throw isEmpty(
+        (err as AxiosRequestErrorType<PayloadErrorType>)?.response?.data?.error
+          ?.fullMessages,
+      )
+        ? err
+        : (err as AxiosRequestErrorType<PayloadErrorType>)?.response?.data
+            ?.error;
+    }
+  }, []);
+
+  const { data, isFetched, isLoading, isSuccess, error } =
+    useQuery<CurrentUserResponse>({
+      queryKey: [cacheKey],
+      queryFn,
+
       // TODO look how fix Hydration
       // placeholderData: () => {
       //   return (
@@ -55,16 +59,17 @@ export function useFetchCurrentUser({ options }: UseFetchCurrentUserOptions) {
       //     ) || undefined
       //   );
       // },
-      onSuccess: (data) => {
-        SyncStorage.setItem<CurrentUserResponse>(
-          localStoragePlaceholderKey,
-          data,
-        );
-        options?.onSuccess?.(data);
-        return;
-      },
-    },
-  );
+    });
+
+  useEffect(() => {
+    if (isSuccess) {
+      SyncStorage.setItem<CurrentUserResponse>(
+        localStoragePlaceholderKey,
+        data,
+      );
+      options?.onSuccess?.(data);
+    }
+  }, [isSuccess, data]);
 
   const item = data?.[itemKey] || null;
 
