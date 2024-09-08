@@ -18,7 +18,7 @@ export async function GET() {
 
     const response = { id: currentUserId };
 
-    return NextResponse.json(response);
+    return NextResponse.json({ success: true, currentUser: response });
   } catch (error) {
     return processError({ error: error as Error });
   }

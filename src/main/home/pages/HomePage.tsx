@@ -1,7 +1,5 @@
 import React from 'react';
 
-function HomePage() {
+export function HomePage() {
   return <div className="h-full">Home page 3</div>;
 }
-
-export default HomePage;

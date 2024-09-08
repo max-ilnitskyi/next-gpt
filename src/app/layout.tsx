@@ -1,6 +1,10 @@
 import type { Metadata } from 'next';
 import cl from 'classnames';
 import { Inter } from 'next/font/google';
+
+import { AppLayout } from '@/common/layouts/AppLayout';
+import { AppProvider } from '@/common/AppProvider';
+
 import './globals.css';
 
 const inter = Inter({ subsets: ['latin'] });
@@ -18,7 +22,9 @@ export default function RootLayout({
   return (
     <html className="h-full" lang="en">
       <body className={cl('h-full relative overflow-hidden', inter.className)}>
-        {children}
+        <AppProvider>
+          <AppLayout>{children}</AppLayout>
+        </AppProvider>
       </body>
     </html>
   );
