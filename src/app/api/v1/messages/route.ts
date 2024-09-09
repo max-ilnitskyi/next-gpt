@@ -59,7 +59,7 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json({
       success: true,
-      [scopeSingular]: camelcaseKeys({...message}),
+      [scopeSingular]: camelcaseKeys({ ...message }),
     });
   } catch (error) {
     return processError({ error: error as Error });
