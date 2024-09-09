@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+import camelcaseKeys from 'camelcase-keys';
 
 import { Message } from '@/server/models/message/message.entity';
 import { MessageService } from '@/server/models/message/message.service';
@@ -11,6 +12,7 @@ import { ParseIndexQuery } from '@/server/utils/ParseIndexQuery';
 import { MessageTypes } from '@/server/models/message/message.types';
 
 const scope = 'messages';
+const scopeSingular = 'message';
 
 export async function GET(request: NextRequest) {
   try {
@@ -40,22 +42,25 @@ export async function POST(request: NextRequest) {
 
     const body = await request.json();
 
-    const message = body?.message;
+    const content = body?.content;
 
-    if (!message) {
-      throw new ServerException('message field is required');
+    if (!content) {
+      throw new ServerException('content field is required');
     }
 
-    const response = await analyzeMessage(message);
+    const response = await analyzeMessage(content);
 
     const newMessage = new Message();
     newMessage.user_id = currentUserId;
-    newMessage.content = message;
+    newMessage.content = content;
     newMessage.valence = response.valence;
     newMessage.arousal = response.arousal;
-    await MessageService.create(newMessage);
+    const message = await MessageService.create(newMessage);
 
-    return NextResponse.json({ success: true, data: response });
+    return NextResponse.json({
+      success: true,
+      [scopeSingular]: camelcaseKeys({ ...message }),
+    });
   } catch (error) {
     return processError({ error: error as Error });
   }
