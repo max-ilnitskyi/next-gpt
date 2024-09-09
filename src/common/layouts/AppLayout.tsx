@@ -15,13 +15,13 @@ export function AppLayout({ children }: AppLayoutProps) {
   const { currentUser, currentUserLoading, currentUserErrorMessage } =
     useAuth();
   return (
-    <div className="h-full bg-gray-900">
+    <div className="h-full bg-gradient-to-br from-indigo-950 via-gray-900 to-pink-950">
       <AlertMessage message={currentUserErrorMessage} />
       <Loading loaded={!currentUserLoading}>
         {currentUser ? (
-          <div className="h-full bg-gray-900 text-white flex flex-col items-center">
+          <div className="h-full">
             <AppHeader />
-            {children}
+            <main className="h-full">{children}</main>
           </div>
         ) : null}
       </Loading>

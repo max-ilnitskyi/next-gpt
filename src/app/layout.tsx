@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import cl from 'classnames';
-import { Inter } from 'next/font/google';
+import { Source_Code_Pro } from 'next/font/google';
 
 import { AppLayout } from '@/common/layouts/AppLayout';
 import { AppProvider } from '@/common/AppProvider';
@@ -8,7 +8,7 @@ import { AppProvider } from '@/common/AppProvider';
 import { AppPublicIcons } from '@/common/AppPublicIcons';
 import '@/styles/globals.scss';
 
-const inter = Inter({ subsets: ['latin'] });
+const inter = Source_Code_Pro({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -25,7 +25,12 @@ export default function RootLayout({
 }>) {
   return (
     <html className="h-full" lang="en">
-      <body className={cl('h-full relative overflow-hidden', inter.className)}>
+      <body
+        className={cl(
+          'h-full relative overflow-hidden text-white',
+          inter.className,
+        )}
+      >
         <AppProvider>
           <AppLayout>{children}</AppLayout>
         </AppProvider>
