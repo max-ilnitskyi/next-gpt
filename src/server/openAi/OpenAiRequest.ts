@@ -83,5 +83,3 @@ export class OpenAiRequest {
     return response;
   }
 }
-
-export default OpenAiRequest;

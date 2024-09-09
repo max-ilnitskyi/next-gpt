@@ -10,7 +10,7 @@ export function Loading({ children, loaded }: LoadingProps) {
     return children;
   }
   return (
-    <div className="h-full flex items-center justify-center text-gray-600">
+    <div className="h-full flex items-center justify-center text-gray-400">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 32 32"
