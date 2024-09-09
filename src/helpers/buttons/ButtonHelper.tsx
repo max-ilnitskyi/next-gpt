@@ -4,6 +4,7 @@ import { BaseButtonHelper } from './BaseButtonHelper';
 interface ButtonHelperProps {
   className?: string;
   disabled?: boolean;
+  loading?: boolean;
   text?: string;
   onClick: () => void;
 }
@@ -11,6 +12,7 @@ interface ButtonHelperProps {
 function _ButtonHelper({
   className,
   disabled,
+  loading,
   text,
   onClick,
 }: ButtonHelperProps) {
@@ -18,6 +20,7 @@ function _ButtonHelper({
     <BaseButtonHelper
       className={className}
       disabled={disabled}
+      loading={loading}
       onClick={onClick}
     >
       {text ? <span>{text}</span> : null}

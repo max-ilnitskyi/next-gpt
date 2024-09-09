@@ -4,10 +4,13 @@ export const words = {
   myMessages: 'My Messages',
   howItWorks: 'How It Works',
   contacts: 'Contacts',
+  analyze: 'Analyze',
+  reset: 'Reset',
 };
 
 export const strings = {
   analyzeMessage: 'Analyze Message',
-  AIPoweredToolForMonitoringEmotionalTone:
+  aiPoweredToolForMonitoringEmotionalTone:
     'AI-powered tool for monitoring emotional tone',
+  enterYourMessageHere: 'Enter your message here...',
 };

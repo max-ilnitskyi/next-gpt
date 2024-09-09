@@ -1,18 +1,22 @@
 import React, { MouseEvent, ReactNode, useCallback } from 'react';
 
+import { Loading } from '../Loading';
+
 type BaseButtonHelperOnClick = (e: MouseEvent<HTMLButtonElement>) => void;
 
 interface BaseButtonHelperProps {
   className?: string;
   disabled?: boolean;
+  loading?: boolean;
   children: ReactNode;
   onClick: BaseButtonHelperOnClick;
 }
 
 export function BaseButtonHelper({
-  children,
   className,
   disabled,
+  loading,
+  children,
   onClick,
 }: BaseButtonHelperProps) {
   const handleClick = useCallback<BaseButtonHelperOnClick>(
@@ -27,10 +31,10 @@ export function BaseButtonHelper({
     <button
       type="button"
       className={className}
-      disabled={disabled}
+      disabled={disabled || loading}
       onClick={handleClick}
     >
-      {children}
+      {loading ? <Loading iconClassName="w-8 h-8 animate-spin" /> : children}
     </button>
   );
 }

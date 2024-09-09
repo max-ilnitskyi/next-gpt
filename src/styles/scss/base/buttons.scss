@@ -1,0 +1,6 @@
+button {
+  // Set default styles for disabled state
+  &:disabled {
+    @apply pointer-events-none opacity-75;
+  }
+}

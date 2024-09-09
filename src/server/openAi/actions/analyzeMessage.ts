@@ -7,7 +7,7 @@ import { OpenAiRequest } from '@/server/openAi/OpenAiRequest';
 const systemContent = `
 Please analyze the following text and evaluate it on two scales: Valence and Arousal.
 Valence reflects the degree of positivity or negativity of the emotion (ranging from -100 to 100),
-and Arousal represents the intensity or energy level of the emotion (ranging from -100 to 100).
+and Arousal represents the intensity or energy level of the emotion (ranging from 0 to 100).
 Return the result in JSON format, with Valence and Arousal as numeric values.
 `;
 
@@ -19,7 +19,7 @@ const responseFormat = zodResponseFormat(
     }),
     arousal: z.number({
       description:
-        'represents the intensity or energy level of the emotion (ranging from -100 to 100)',
+        'represents the intensity or energy level of the emotion (ranging from 0 to 100)',
     }),
   }),
   'analyzeMessage',
