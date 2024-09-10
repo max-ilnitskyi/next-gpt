@@ -47,12 +47,12 @@ export function CreateMessageCard() {
   }, []);
 
   return (
-    <div className="w-full max-w-md">
+    <div className="w-full">
       {!message ? (
-        <div className="bg-white text-gray-900 p-6 rounded-lg shadow-lg w-full max-w-md">
+        <div className="bg-white text-gray-900 p-6 rounded-lg shadow-lg w-full">
           <div>
             <textarea
-              className="w-full h-24 p-2 border border-gray-300 rounded mb-4"
+              className="w-full h-36 p-2 border border-gray-300 rounded mb-4"
               placeholder={strings.enterYourMessageHere}
               autoFocus
               value={text}

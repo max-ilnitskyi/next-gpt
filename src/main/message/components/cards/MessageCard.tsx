@@ -7,6 +7,7 @@ import {
 } from '../../messageTypes';
 
 import { MessageDescription } from './MessageDescription';
+import { ValenceIcon } from '../ValenceIcon';
 import { BaseTooltipHelper } from '@/helpers/tooltips/BaseTooltipHelper';
 
 import { classifyMessageValenceAndArousal } from '../../utils/classifyMessageValenceAndArousal';
@@ -35,7 +36,7 @@ export function MessageCard({ message }: MessageCardProps) {
     >
       <div
         className={cl(
-          'bg-white text-gray-900 p-6 rounded-lg shadow-lg w-full',
+          'relative bg-white text-gray-900 p-6 rounded-lg shadow-lg w-full',
           {
             'border-4':
               arousalClassification === MessageArousalClassification.LOW,
@@ -59,22 +60,30 @@ export function MessageCard({ message }: MessageCardProps) {
         )}
       >
         {/* Message content */}
-        <div className="w-full h-24 p-2 border border-gray-300 rounded mb-4 overflow-y-auto">
+        <div className="w-full h-36 p-2 border border-gray-300 rounded mb-4 overflow-y-auto">
           <span>{message.content}</span>
         </div>
+
         {/* Emotional indicators */}
         <div className="mt-4 flex items-center justify-between">
           {/* Valence indicator */}
           <div className="flex items-center">
-            <span className="text-sm font-medium mr-2">{words.valence}:</span>
-            <span className="text-sm font-bold">{message.valence}</span>
+            <span className="text-lg font-medium mr-2">{words.valence}:</span>
+            <span className="text-lg font-bold">{message.valence}</span>
           </div>
 
           {/* Arousal indicator */}
           <div className="flex items-center">
-            <span className="text-sm font-medium mr-2">{words.arousal}:</span>
-            <span className="text-sm font-semibold">{message.arousal}</span>
+            <span className="text-lg font-medium mr-2">{words.arousal}:</span>
+            <span className="text-lg font-bold">{message.arousal}</span>
           </div>
+
+          {valenceClassification ? (
+            <ValenceIcon
+              addClassName="size-10"
+              valenceClassification={valenceClassification}
+            />
+          ) : null}
         </div>
       </div>
     </BaseTooltipHelper>
