@@ -5,6 +5,8 @@ export const words = {
   valence: 'Valence',
   description: 'Description',
   unknown: 'Unknown',
+  email: 'Email',
+  phone: 'Phone',
 } as const;
 
 export const pages = {
@@ -48,6 +50,8 @@ export const strings = {
   fromMinus1to1: 'from -1.0 to 1.0',
   from0to1: 'from 0 to 1.0',
   currentValue: 'Current value',
+  ifYouHaveAnyQuestionsOrWantToLearnMore:
+    'If you have any questions or would like to learn more about our AI-powered emotional analysis tool, feel free to contact us.',
   arousalClassification: {
     low: 'The message has a low level of emotional intensity. This typically indicates calmness, relaxation, or a lack of strong emotional engagement.',
     medium:

@@ -1,5 +1,7 @@
 import type { Metadata } from 'next';
 
+import { InfoLayout } from '@/common/layouts/InfoLayout';
+
 import { pages } from '@/texts';
 
 export const metadata: Metadata = {
@@ -12,5 +14,5 @@ export default function ContactsLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return <>{children}</>;
+  return <InfoLayout>{children}</InfoLayout>;
 }
