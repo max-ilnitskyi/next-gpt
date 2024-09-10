@@ -1,16 +1,44 @@
 export const words = {
-  home: 'Home',
-  examples: 'Examples',
-  myMessages: 'My Messages',
-  howItWorks: 'How It Works',
-  contacts: 'Contacts',
   analyze: 'Analyze',
   reset: 'Reset',
   arousal: 'Arousal',
   valence: 'Valence',
   description: 'Description',
   unknown: 'Unknown',
-};
+} as const;
+
+export const pages = {
+  home: {
+    shortName: 'Home',
+    title: 'Analyze Client Messages – AI-powered Sentiment Analysis',
+    description:
+      'Use our AI-powered tool to analyze the emotional tone of customer feedback, comments, and messages. Gain insights into how your customers feel.',
+  },
+  contacts: {
+    shortName: 'Contacts',
+    title: 'Contact Us – AI Emotional Tone Analyzer for Business',
+    description:
+      'Get in touch to learn more about how our AI-powered sentiment analysis tool can help your business better understand customer feedback.',
+  },
+  examples: {
+    shortName: 'Examples',
+    title: 'Customer Message Examples – Emotional Tone Analysis',
+    description:
+      'Browse through examples of analyzed customer feedback and comments. See how our AI tool detects emotional sentiment in client communication.',
+  },
+  myMessages: {
+    shortName: 'My Messages',
+    title: 'My Analyzed Messages',
+    description:
+      'Review and manage the emotional analysis of your customer messages. Monitor the sentiment of comments, reviews, and conversations with ease.',
+  },
+  howItWorks: {
+    shortName: 'How It Works',
+    title: 'How AI Sentiment Analysis Works – Understanding Emotional Insights',
+    description:
+      'Learn how our AI analyzes customer feedback and messages, providing insights into the emotional tone of client interactions.',
+  },
+} as const;
 
 export const strings = {
   analyzeMessage: 'Analyze Message',
@@ -38,4 +66,4 @@ export const strings = {
     strong_positive:
       'The message conveys very positive emotions. This could indicate strong enthusiasm, excitement, or happiness, reflecting a highly positive sentiment.',
   },
-};
+} as const;

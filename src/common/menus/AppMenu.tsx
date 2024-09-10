@@ -8,7 +8,7 @@ import { LinkHelper } from '@/helpers/links/LinkHelper';
 import { BaseButtonHelper } from '@/helpers/buttons/BaseButtonHelper';
 
 import { AppPath } from '@/common/AppPath';
-import { words } from '@/texts';
+import { pages } from '@/texts';
 
 export function AppMenu() {
   const [showMobileMenu, toggleMobileMenu] = useToggle();
@@ -28,31 +28,31 @@ export function AppMenu() {
         <LinkHelper
           className="block p-4 md:p-4 lg:p-6 text-center text-gray-100 hover:bg-gray-100 hover:bg-opacity-10 uppercase"
           href={AppPath.home()}
-          text={words.home}
+          text={pages.home.shortName}
           onClick={toggleMobileMenu}
         />
         <LinkHelper
           className="block p-4 md:p-4 lg:p-6 text-center text-gray-100 hover:bg-gray-100 hover:bg-opacity-10 uppercase"
           href={AppPath.examples()}
-          text={words.examples}
+          text={pages.examples.shortName}
           onClick={toggleMobileMenu}
         />
         <LinkHelper
           className="block p-4 md:p-4 lg:p-6 text-center text-gray-100 hover:bg-gray-100 hover:bg-opacity-10 uppercase"
           href={AppPath.myMessages()}
-          text={words.myMessages}
+          text={pages.myMessages.shortName}
           onClick={toggleMobileMenu}
         />
         <LinkHelper
           className="block p-4 md:p-4 lg:p-6 text-center text-gray-100 hover:bg-gray-100 hover:bg-opacity-10 uppercase"
           href={AppPath.howItWorks()}
-          text={words.howItWorks}
+          text={pages.howItWorks.shortName}
           onClick={toggleMobileMenu}
         />
         <LinkHelper
           className="block p-4 md:p-4 lg:p-6 text-center text-gray-100 hover:bg-gray-100 hover:bg-opacity-10 uppercase"
           href={AppPath.contacts()}
-          text={words.contacts}
+          text={pages.contacts.shortName}
           onClick={toggleMobileMenu}
         />
       </div>
