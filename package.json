@@ -1,6 +1,6 @@
 {
-  "name": "58_next_gpt",
-  "version": "0.1.0",
+  "name": "message-analyze",
+  "version": "0.2.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
