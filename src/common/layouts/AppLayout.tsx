@@ -3,6 +3,7 @@ import React, { ReactNode } from 'react';
 import { useAuth } from '@/auth/hooks/useAuth';
 
 import { AppHeader } from '@/common/headers/AppHeader';
+import { AppFooter } from '../footers/AppFooter';
 
 import { AlertMessage } from '@/helpers/AlertMessage';
 import { Loading } from '@/helpers/Loading';
@@ -15,13 +16,14 @@ export function AppLayout({ children }: AppLayoutProps) {
   const { currentUser, currentUserLoading, currentUserErrorMessage } =
     useAuth();
   return (
-    <div className="h-full bg-gradient-to-br from-indigo-950 via-gray-900 to-pink-950">
+    <div className="h-screen bg-gradient-to-br from-indigo-950 via-gray-900 to-pink-950">
       <AlertMessage message={currentUserErrorMessage} />
       <Loading loaded={!currentUserLoading}>
         {currentUser ? (
-          <div className="h-full">
+          <div className="h-screen flex flex-col overflow-y-auto">
             <AppHeader />
-            <main className="h-full">{children}</main>
+            <main className="flex-1 flex flex-col">{children}</main>
+            <AppFooter />
           </div>
         ) : null}
       </Loading>

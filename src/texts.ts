@@ -70,4 +70,23 @@ export const strings = {
     strong_positive:
       'The message conveys very positive emotions. This could indicate strong enthusiasm, excitement, or happiness, reflecting a highly positive sentiment.',
   },
+  howItWorks: {
+    step1Title: 'Step 1: Analyze Customer Messages',
+    step1Text:
+      "Enter any message from your customers, whether it's feedback, a review, or a chat message. Our tool will process the text and provide an instant analysis of the emotional tone.",
+    step2Title: 'Step 2: Understand Valence',
+    step2Text:
+      'Valence refers to the positivity or negativity of the message. A higher valence score means a more positive sentiment, while a lower score indicates a negative emotion. This helps you quickly determine whether the customer is satisfied or frustrated.',
+    step3Title: 'Step 3: Measure Arousal',
+    step3Text:
+      'Arousal measures the emotional intensity of the message. It ranges from calm and relaxed to highly excited or stressed. This helps you gauge how strongly the customer feels about their experience.',
+    step4Title: 'Step 4: Take Action',
+    step4Text:
+      'Once you understand the emotional tone of your customer messages, you can take the necessary steps to improve your services, address issues, or enhance positive experiences. Emotional analysis helps you connect with your customers on a deeper level.',
+    ourAIPoweredToolHelps:
+      'Our AI-powered tool helps businesses understand the emotional tone of customer messages, including feedback, reviews, and conversations. By analyzing both valence (positive or negative sentiment) and arousal (emotional intensity), you can gain insights into how your customers truly feel.',
+    forMoreDetailedInformationOn:
+      'For more detailed information on the Valence-Arousal model and its application in emotional analysis, visit',
+    thisResource: 'this resource.',
+  },
 } as const;

@@ -25,10 +25,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html className="h-full" lang="en">
+    <html className="h-screen" lang="en">
       <body
         className={cl(
-          'h-full relative overflow-hidden text-white',
+          'h-screen relative overflow-hidden text-white',
           inter.className,
         )}
       >
