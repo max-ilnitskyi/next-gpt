@@ -31,7 +31,7 @@ export function AppMenu() {
           text={pages.home.shortName}
           onClick={toggleMobileMenu}
         />
-        <LinkHelper
+        {/* <LinkHelper
           className="block p-4 md:p-4 lg:p-6 text-center text-gray-100 hover:bg-gray-100 hover:bg-opacity-10 uppercase"
           href={AppPath.examples()}
           text={pages.examples.shortName}
@@ -42,7 +42,7 @@ export function AppMenu() {
           href={AppPath.myMessages()}
           text={pages.myMessages.shortName}
           onClick={toggleMobileMenu}
-        />
+        /> */}
         <LinkHelper
           className="block p-4 md:p-4 lg:p-6 text-center text-gray-100 hover:bg-gray-100 hover:bg-opacity-10 uppercase"
           href={AppPath.howItWorks()}
