@@ -3,6 +3,8 @@ import { DataSource } from 'typeorm';
 import { Message } from '@/server/models/message/message.entity';
 import { User } from '@/server/models/user/user.entity';
 
+import { IS_PRODUCTION } from '@/config';
+
 class DatabaseConnection {
   static dbPromise?: Promise<DataSource>;
 
@@ -20,8 +22,8 @@ class DatabaseConnection {
       database: process.env.DB_NAME,
       ssl: { rejectUnauthorized: false },
       entities: [Message, User],
-      synchronize: true,
-      logging: false,
+      synchronize: !IS_PRODUCTION,
+      logging: IS_PRODUCTION,
     });
 
     const dbPromise = AppDataSource.initialize();
