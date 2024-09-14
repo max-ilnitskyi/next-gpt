@@ -2,16 +2,26 @@ import React, { ReactNode } from 'react';
 
 interface LoadingProps {
   children?: ReactNode;
+  className?: string;
   iconClassName?: string;
   loaded?: boolean;
 }
 
-export function Loading({ children, iconClassName, loaded }: LoadingProps) {
+export function Loading({
+  children,
+  className,
+  iconClassName,
+  loaded,
+}: LoadingProps) {
   if (loaded) {
     return children;
   }
   return (
-    <div className="h-full flex items-center justify-center text-gray-400">
+    <div
+      className={
+        className || 'h-full flex items-center justify-center text-gray-400'
+      }
+    >
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 32 32"
