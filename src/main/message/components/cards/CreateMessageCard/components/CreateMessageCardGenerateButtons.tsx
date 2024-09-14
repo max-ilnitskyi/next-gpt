@@ -22,7 +22,7 @@ export function CreateMessageCardGenerateButtons({
   onNegative,
 }: CreateMessageCardGenerateButtonsProps) {
   return (
-    <div className="w-full flex justify-between px-20">
+    <div className="w-full flex justify-center sm:justify-between sm:px-20">
       <BaseTooltipHelper
         contentClassName="z-10 max-w-md p-2 bg-gray-200 text-gray-900 rounded-lg overflow-hidden drop-shadow-xl"
         content={strings.generateNegativeMessage}
