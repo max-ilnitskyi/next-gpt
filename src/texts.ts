@@ -44,6 +44,11 @@ export const pages = {
 
 export const strings = {
   analyzeMessage: 'Analyze Message',
+  generateNegativeMessage: 'Generate negative message',
+  generateNeutralMessage: 'Generate neutral message',
+  generatePositiveMessage: 'Generate positive message',
+  generateACustomerMessage: 'Generate a customer message',
+  orEnterYourOwnText: 'or enter your own text',
   aiPoweredToolForMonitoringEmotionalTone:
     'AI-powered tool for monitoring emotional tone',
   enterYourMessageHere: 'Enter your message here...',

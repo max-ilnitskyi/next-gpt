@@ -1,4 +1,10 @@
-import React, { MouseEvent, ReactNode, useCallback } from 'react';
+import React, {
+  forwardRef,
+  ForwardedRef,
+  MouseEvent,
+  ReactNode,
+  useCallback,
+} from 'react';
 
 import { Loading } from '../Loading';
 
@@ -12,13 +18,10 @@ interface BaseButtonHelperProps {
   onClick: BaseButtonHelperOnClick;
 }
 
-export function BaseButtonHelper({
-  className,
-  disabled,
-  loading,
-  children,
-  onClick,
-}: BaseButtonHelperProps) {
+function _BaseButtonHelper(
+  { className, disabled, loading, children, onClick }: BaseButtonHelperProps,
+  ref?: ForwardedRef<HTMLButtonElement>,
+) {
   const handleClick = useCallback<BaseButtonHelperOnClick>(
     (e) => {
       e.preventDefault();
@@ -30,6 +33,7 @@ export function BaseButtonHelper({
   return (
     <button
       type="button"
+      ref={ref}
       className={className}
       disabled={disabled || loading}
       onClick={handleClick}
@@ -38,3 +42,5 @@ export function BaseButtonHelper({
     </button>
   );
 }
+
+export const BaseButtonHelper = forwardRef(_BaseButtonHelper);
