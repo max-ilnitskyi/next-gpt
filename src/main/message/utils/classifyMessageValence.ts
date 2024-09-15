@@ -3,19 +3,19 @@ import { MessageValenceClassification } from '../messageTypes';
 export function classifyMessageValence(
   valence: number,
 ): MessageValenceClassification | null {
-  if (valence >= 0.7) {
+  if (valence >= 0.66) {
     return MessageValenceClassification.STRONG_POSITIVE;
   }
 
-  if (valence >= 0.3) {
+  if (valence >= 0.33) {
     return MessageValenceClassification.POSITIVE;
   }
 
-  if (valence > -0.3) {
+  if (valence > -0.33) {
     return MessageValenceClassification.NEUTRAL;
   }
 
-  if (valence > -0.7) {
+  if (valence > -0.66) {
     return MessageValenceClassification.NEGATIVE;
   }
 
