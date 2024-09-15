@@ -61,7 +61,7 @@ export const strings = {
     low: 'The message has a low level of emotional intensity. This typically indicates calmness, relaxation, or a lack of strong emotional engagement.',
     medium:
       'The message has a moderate level of emotional intensity. It suggests a balanced emotional state, where some excitement or engagement is present, but not at extreme levels.',
-    high: 'The message has a high level of emotional intensity. This indicates strong emotions such as excitement, anger, or stress, signaling a highly charged emotional response',
+    high: 'The message has a high level of emotional intensity. This indicates strong emotions such as excitement, anger, or stress, signaling a highly charged emotional response.',
   },
   valenceClassification: {
     strong_negative:

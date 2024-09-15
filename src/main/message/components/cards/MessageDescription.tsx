@@ -41,16 +41,16 @@ export function MessageDescription({ message }: MessageDescriptionProps) {
     classifyMessageValenceAndArousal(message);
 
   return (
-    <div className="p-4 w-full space-y-4">
-      <h2 className="text-xl font-bold">{words.description}</h2>
+    <div className="p-2 md:p-4 w-full space-y-2 md:space-y-4">
+      <h2 className="text-lg md:text-xl font-bold">{words.description}</h2>
 
       {/* Valence description */}
       <div>
         <h3>
-          <span className="text-lg font-bold">
+          <span className="text-base md:text-lg  font-bold">
             {words.valence}: {message.valence}
           </span>
-          <span className="font-normal text-base">{`(${strings.fromMinus1to1})`}</span>
+          <span className="font-normal text-xs md:text-base">{`(${strings.fromMinus1to1})`}</span>
         </h3>
         <p className="leading-4">
           {messageValenceDescriptions[
@@ -62,10 +62,10 @@ export function MessageDescription({ message }: MessageDescriptionProps) {
       {/* Arousal description */}
       <div>
         <h3>
-          <span className="text-lg font-bold">
+          <span className="text-base md:text-lg font-bold">
             {words.arousal}: {message.arousal}
           </span>
-          <span className="font-normal text-base">{`(${strings.from0to1})`}</span>
+          <span className="font-normal text-xs md:text-base">{`(${strings.from0to1})`}</span>
         </h3>
         <p className="leading-4">
           {messageArousalDescriptions[

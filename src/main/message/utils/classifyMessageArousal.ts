@@ -3,11 +3,11 @@ import { MessageArousalClassification } from '../messageTypes';
 export function classifyMessageArousal(
   arousal: number,
 ): MessageArousalClassification | null {
-  if (arousal >= 7) {
+  if (arousal >= 0.66) {
     return MessageArousalClassification.HIGH;
   }
 
-  if (arousal >= 3) {
+  if (arousal >= 0.33) {
     return MessageArousalClassification.MEDIUM;
   }
 
