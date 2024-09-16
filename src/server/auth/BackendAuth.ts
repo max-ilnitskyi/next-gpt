@@ -71,6 +71,20 @@ export class BackendAuth {
     }
   }
 
+  static async getOrCreateUserId() {
+    const { currentUserId: existingCurrentUserId } = this.getCurrentUserId();
+
+    let currentUserId = existingCurrentUserId;
+
+    if (!currentUserId) {
+      const { currentUserId: newUserId } = await this.setNewUserId();
+
+      currentUserId = newUserId;
+    }
+
+    return { currentUserId };
+  }
+
   static async setNewUserId(): Promise<{
     currentUserId: number;
   }> {

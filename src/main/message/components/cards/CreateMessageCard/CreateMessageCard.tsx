@@ -32,7 +32,7 @@ export function CreateMessageCard() {
   return (
     <div className="w-full">
       {!message ? (
-        <div className="bg-white text-gray-900 p-6 rounded-lg shadow-lg w-full">
+        <div className="bg-white text-gray-900 p-2 sm:p-6 rounded-lg shadow-lg w-full">
           <div className="text-center text-lg font-semibold">
             {strings.generateACustomerMessage}
           </div>
@@ -46,7 +46,7 @@ export function CreateMessageCard() {
             {strings.orEnterYourOwnText}
           </div>
           <div>
-            <div className="relative mb-4">
+            <div className="relative">
               <Loading
                 className="absolute inset-0 flex text-gray-400 bg-gray-900 bg-opacity-10"
                 loaded={!generateMessageContentPending}
@@ -62,7 +62,7 @@ export function CreateMessageCard() {
               />
             </div>
             <ButtonHelper
-              className="w-full bg-indigo-500 text-white py-2 rounded hover:bg-blue-600"
+              className="w-full mt-2 sm:mt-4 bg-indigo-500 text-white py-2 rounded hover:bg-blue-600"
               text={words.analyze}
               disabled={!text || generateMessageContentPending}
               loading={createMessagePending}

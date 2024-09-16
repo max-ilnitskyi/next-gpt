@@ -38,7 +38,7 @@ export async function GET(request: NextRequest) {
 
 export async function POST(request: NextRequest) {
   try {
-    const { currentUserId } = await BackendAuth.getCurrentUserIdRequired();
+    const { currentUserId } = await BackendAuth.getOrCreateUserId();
 
     const body = await request.json();
 
