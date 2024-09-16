@@ -22,7 +22,7 @@ export function AppMenu() {
       <div
         className={cl(
           'z-5 bg-gray-900 md:bg-transparent absolute top-full left-0 right-0 border-gray-700 border-y md:border-0 drop-shadow-xl md:static md:flex',
-          'bg-gradient-to-r from-[#000036] to-[#290011] md:from-transparent md:to-transparent',
+          'bg-gradient-to-r from-[#000036] to-[#2e0c1a] md:from-transparent md:to-transparent',
           showMobileMenu ? null : 'hidden',
         )}
       >
