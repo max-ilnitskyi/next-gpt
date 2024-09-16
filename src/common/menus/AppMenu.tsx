@@ -1,3 +1,4 @@
+'use client';
 import React from 'react';
 import cl from 'classnames';
 import Bars3Icon from '@heroicons/react/24/outline/Bars3Icon';

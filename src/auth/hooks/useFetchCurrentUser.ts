@@ -10,9 +10,9 @@ import parseRequestError from '@/utils/parseRequestError/parseRequestError';
 
 import { AuthCacheKey } from '../AuthCacheKey';
 import { AuthApiPath } from '../AuthApiPath';
-import { UserInfo } from './useAuth';
+import { UserInfo } from './useCurrentUser';
 
-interface CurrentUserResponse {
+interface FetchCurrentUserResponse {
   currentUser: UserInfo | null;
 }
 
@@ -21,16 +21,18 @@ const cacheKey = AuthCacheKey.currentUser();
 
 interface UseFetchCurrentUserOptions {
   options: {
-    onSuccess: (data: CurrentUserResponse) => void;
+    onSuccess: (data: FetchCurrentUserResponse) => void;
   };
 }
 
 export function useFetchCurrentUser({ options }: UseFetchCurrentUserOptions) {
   const localStoragePlaceholderKey = getQueryPlaceholderKey(cacheKey);
 
-  const queryFn = useCallback<() => Promise<CurrentUserResponse>>(async () => {
+  const queryFn = useCallback<
+    () => Promise<FetchCurrentUserResponse>
+  >(async () => {
     try {
-      const response = await ApiRequest.get<CurrentUserResponse>(
+      const response = await ApiRequest.get<FetchCurrentUserResponse>(
         AuthApiPath.currentUser(),
       );
 
@@ -47,7 +49,7 @@ export function useFetchCurrentUser({ options }: UseFetchCurrentUserOptions) {
   }, []);
 
   const { data, isFetched, isLoading, isSuccess, error } =
-    useQuery<CurrentUserResponse>({
+    useQuery<FetchCurrentUserResponse>({
       queryKey: [cacheKey],
       queryFn,
 
@@ -63,7 +65,7 @@ export function useFetchCurrentUser({ options }: UseFetchCurrentUserOptions) {
 
   useEffect(() => {
     if (isSuccess) {
-      SyncStorage.setItem<CurrentUserResponse>(
+      SyncStorage.setItem<FetchCurrentUserResponse>(
         localStoragePlaceholderKey,
         data,
       );

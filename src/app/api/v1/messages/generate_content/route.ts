@@ -29,8 +29,6 @@ const valenceArousalByType = {
 
 export async function POST(request: NextRequest) {
   try {
-    await BackendAuth.getCurrentUserIdRequired();
-
     const body = await request.json();
 
     const type: keyof typeof valenceArousalByType = body?.type;

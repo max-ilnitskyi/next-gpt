@@ -1,6 +1,6 @@
 import { UserID } from '@/main/user/userTypes';
 
-import { UserInfo } from './useAuth.types';
+import { UserInfo } from './useCurrentUser.types';
 
 export class AuthenticatedUser {
   id: UserID;
