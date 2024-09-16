@@ -31,12 +31,12 @@ export function MessageCard({ message }: MessageCardProps) {
   return (
     <BaseTooltipHelper
       className="w-full"
-      contentClassName="max-w-md bg-gray-200 text-gray-900 rounded-lg overflow-hidden drop-shadow-xl"
+      contentClassName="max-w-md bg-gray-200 text-gray-900 rounded-lg overflow-auto drop-shadow-xl"
       content={<MessageDescription message={message} />}
     >
       <div
         className={cl(
-          'relative bg-white text-gray-900 p-6 rounded-lg shadow-lg w-full',
+          'relative bg-white text-gray-900 p-2 sm:p-6 rounded-lg shadow-lg w-full',
           {
             'border-4':
               arousalClassification === MessageArousalClassification.LOW,
@@ -60,22 +60,28 @@ export function MessageCard({ message }: MessageCardProps) {
         )}
       >
         {/* Message content */}
-        <div className="w-full h-36 p-2 border border-gray-300 rounded mb-4 overflow-y-auto">
+        <div className="w-full h-36 p-2 border border-gray-300 rounded overflow-y-auto">
           <span>{message.content}</span>
         </div>
 
         {/* Emotional indicators */}
-        <div className="mt-4 flex items-center justify-between">
-          {/* Valence indicator */}
-          <div className="flex items-center">
-            <span className="text-lg font-medium mr-2">{words.valence}:</span>
-            <span className="text-lg font-bold">{message.valence}</span>
-          </div>
+        <div className="mt-2 sm:mt-4 flex items-center justify-between flex-col sm:flex-row">
+          <div className="flex flex-wrap justify-around">
+            {/* Valence indicator */}
+            <div className="flex items-center px-1">
+              <span className="sm:text-lg font-medium mr-2">
+                {words.valence}:
+              </span>
+              <span className="sm:text-lg font-bold">{message.valence}</span>
+            </div>
 
-          {/* Arousal indicator */}
-          <div className="flex items-center">
-            <span className="text-lg font-medium mr-2">{words.arousal}:</span>
-            <span className="text-lg font-bold">{message.arousal}</span>
+            {/* Arousal indicator */}
+            <div className="flex items-center px-1">
+              <span className="sm:text-lg font-medium mr-2">
+                {words.arousal}:
+              </span>
+              <span className="sm:text-lg font-bold">{message.arousal}</span>
+            </div>
           </div>
 
           {valenceClassification ? (
