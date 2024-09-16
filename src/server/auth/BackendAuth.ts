@@ -6,7 +6,7 @@ import { UserService } from '@/server/models/user/user.service';
 
 import { AuthorizationException } from '@/server/utils/exceptions/AuthorizationException';
 
-const TOKEN_COOKIES_NAME = 'access-token';
+const TOKEN_COOKIES_NAME = 'auth-token';
 
 const NEXT_API_SECRET = process.env.NEXT_API_SECRET as string;
 
@@ -16,7 +16,7 @@ interface BackendAuthTokenPayload {
 
 export class BackendAuth {
   static _getToken(): string | undefined {
-    return cookies().get('access-token')?.value;
+    return cookies().get(TOKEN_COOKIES_NAME)?.value;
   }
   static async _setToken(value: string) {
     cookies().set(TOKEN_COOKIES_NAME, value, {
