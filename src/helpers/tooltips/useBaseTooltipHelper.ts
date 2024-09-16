@@ -9,6 +9,7 @@ import {
   flip,
   shift,
   autoUpdate,
+  size,
 } from '@floating-ui/react';
 
 export function useBaseTooltipHelper() {
@@ -17,7 +18,20 @@ export function useBaseTooltipHelper() {
   const { refs, floatingStyles, context } = useFloating({
     open: isOpen,
     onOpenChange: setIsOpen,
-    middleware: [offset(10), flip(), shift()],
+    middleware: [
+      offset(10),
+      flip(),
+      shift(),
+      size({
+        apply({ availableHeight, availableWidth, elements }) {
+          Object.assign(elements.floating.style, {
+            maxWidth: `${availableWidth - 20}px`,
+            maxHeight: `${availableHeight - 20}px`,
+            overflow: 'auto',
+          });
+        },
+      }),
+    ],
     whileElementsMounted: autoUpdate,
   });
 

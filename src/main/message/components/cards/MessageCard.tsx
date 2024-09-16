@@ -31,8 +31,12 @@ export function MessageCard({ message }: MessageCardProps) {
   return (
     <BaseTooltipHelper
       className="w-full"
-      contentClassName="z-20 max-w-md bg-gray-200 text-gray-900 rounded-lg overflow-auto drop-shadow-xl"
-      content={<MessageDescription message={message} />}
+      contentClassName="z-20 bg-gray-200 text-gray-900 rounded-lg drop-shadow-xl"
+      content={
+        <div className="max-w-md">
+          <MessageDescription message={message} />
+        </div>
+      }
     >
       <div
         className={cl(
