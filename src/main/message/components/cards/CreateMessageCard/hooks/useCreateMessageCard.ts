@@ -2,6 +2,9 @@ import React, { useCallback, useState } from 'react';
 
 import { useCreateMessage } from '@/main/message/hooks/useCreateMessage';
 import { useCreateMessageCardGenerateContent } from './useCreateMessageCardGenerateContent';
+import { MessageCacheKey } from '@/main/message/MessageCacheKey';
+
+const cacheKeys = [MessageCacheKey.count()];
 
 export function useCreateMessageCard() {
   const [text, setText] = useState<string>('');
@@ -12,7 +15,7 @@ export function useCreateMessageCard() {
     createMessageErrorMessage,
     createMessagePending,
     resetCreateMessage,
-  } = useCreateMessage({});
+  } = useCreateMessage({ cacheKeys });
 
   const handleAnalyzeMessage = useCallback<() => void>(() => {
     if (!text) {

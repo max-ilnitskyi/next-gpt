@@ -11,12 +11,14 @@ import { MessageApiPath } from '../MessageApiPath';
 
 interface ExampleMessagesResponse {
   messages: {
-    id: number;
-    content: string;
-    valence: number;
-    arousal: number;
-    createdAt: string;
-  }[];
+    nodes: {
+      id: number;
+      content: string;
+      valence: number;
+      arousal: number;
+      createdAt: string;
+    }[];
+  };
 }
 
 const itemsKey = 'messages';
@@ -57,7 +59,7 @@ export function useExampleMessages() {
       queryFn,
     });
 
-  const item = data?.[itemsKey] || [];
+  const item = data?.[itemsKey]?.nodes || [];
 
   return {
     exampleMessages: item,
@@ -67,5 +69,3 @@ export function useExampleMessages() {
     exampleMessagesLoading: isLoading,
   };
 }
-
-export default useExampleMessages;

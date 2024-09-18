@@ -16,7 +16,11 @@ const scopeSingular = 'message';
 
 export async function GET(request: NextRequest) {
   try {
-    const { currentUserId } = await BackendAuth.getCurrentUserIdRequired();
+    const { currentUserId } = await BackendAuth.getCurrentUserId();
+
+    if (!currentUserId) {
+      return NextResponse.json({ success: true, [scope]: { nodes: [] } });
+    }
 
     const options = new ParseIndexQuery(request).parse();
 
@@ -30,7 +34,7 @@ export async function GET(request: NextRequest) {
       filters: { ...options.filters, ...hardFilters },
     });
 
-    return NextResponse.json({ success: true, [scope]: response });
+    return NextResponse.json({ success: true, [scope]: { nodes: response } });
   } catch (error) {
     return processError({ error: error as Error });
   }

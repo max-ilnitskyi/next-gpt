@@ -5,4 +5,7 @@ export class MessageCacheKey {
   static example() {
     return 'example-messages';
   }
+  static count() {
+    return 'messages-count';
+  }
 }

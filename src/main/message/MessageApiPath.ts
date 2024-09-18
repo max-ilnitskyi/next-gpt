@@ -5,6 +5,9 @@ export class MessageApiPath {
   static example() {
     return 'messages/example_messages';
   }
+  static count() {
+    return 'messages/count';
+  }
   static create() {
     return 'messages';
   }
