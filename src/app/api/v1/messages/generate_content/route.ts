@@ -8,7 +8,6 @@ import { processError } from '@/server/utils/exceptions/processError';
 import { analyzeMessage } from '@/server/openAi/actions/analyzeMessage';
 import { generateMessage } from '@/server/openAi/actions/generateMessage';
 import { ServerException } from '@/server/utils/exceptions/ServerException';
-import { BackendAuth } from '@/server/auth/BackendAuth';
 
 const scope = 'generateMessageContent';
 

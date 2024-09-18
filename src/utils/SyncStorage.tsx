@@ -8,7 +8,8 @@ export class SyncStorage {
   }
   static getItem<T>(key: string): T | null {
     try {
-      return (localStorage.getItem(key) as T) || null;
+      const stringData = localStorage.getItem(key);
+      return stringData ? (JSON.parse(stringData) as T) : null;
     } catch (e) {
       console.log(`Error trying to get stored data with key: ${key}`, e);
       return null;

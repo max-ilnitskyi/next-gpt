@@ -1,6 +1,7 @@
 import { useCallback } from 'react';
-import { useQuery } from '@tanstack/react-query';
+import { useQuery, QueryPersister } from '@tanstack/react-query';
 import isEmpty from 'lodash/isEmpty';
+import { experimental_createPersister } from '@tanstack/query-persist-client-core';
 
 import { AxiosRequestErrorType, PayloadErrorType } from '@/types';
 import ApiRequest from '@/utils/ApiRequest';
@@ -8,6 +9,7 @@ import parseRequestError from '@/utils/parseRequestError/parseRequestError';
 
 import { MessageCacheKey } from '../MessageCacheKey';
 import { MessageApiPath } from '../MessageApiPath';
+import { IS_CLIENT } from '@/config';
 
 interface MessagesCountResponse {
   messagesCount: {
@@ -17,6 +19,10 @@ interface MessagesCountResponse {
 
 const itemsKey = 'messagesCount';
 const cacheKey = MessageCacheKey.count();
+
+const persister: unknown = IS_CLIENT
+  ? experimental_createPersister({ storage: localStorage })
+  : undefined;
 
 export function useMessagesCount() {
   const queryFn = useCallback<
@@ -39,10 +45,13 @@ export function useMessagesCount() {
     }
   }, []);
 
+  const queryKey = [cacheKey];
+
   const { data, isFetched, isLoading, error } = useQuery<MessagesCountResponse>(
     {
-      queryKey: [cacheKey],
+      queryKey,
       queryFn,
+      persister: persister as QueryPersister<MessagesCountResponse>,
     },
   );
 
