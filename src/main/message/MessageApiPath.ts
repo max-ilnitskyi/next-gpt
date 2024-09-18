@@ -1,4 +1,10 @@
 export class MessageApiPath {
+  static index() {
+    return 'messages';
+  }
+  static example() {
+    return 'messages/example_messages';
+  }
   static create() {
     return 'messages';
   }

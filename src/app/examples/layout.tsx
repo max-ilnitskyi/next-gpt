@@ -1,5 +1,7 @@
 import type { Metadata } from 'next';
 
+import { ContentLayout } from '@/common/layouts/ContentLayout';
+
 import { pages } from '@/texts';
 
 export const metadata: Metadata = {
@@ -12,5 +14,5 @@ export default function ExamplesLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return <>{children}</>;
+  return <ContentLayout>{children}</ContentLayout>;
 }
