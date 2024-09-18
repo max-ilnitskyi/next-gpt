@@ -1,14 +1,25 @@
 'use client';
 import React from 'react';
 
+import { useExampleMessages } from '@/main/message/hooks/useExampleMessages';
+
+import { MessagesBlock } from '@/main/message/components/blocks/MessagesBlock';
+
 import { pages } from '@/texts';
 
 export function ExamplesPage() {
+  const {
+    exampleMessages,
+    exampleMessagesLoading,
+    exampleMessagesErrorMessage,
+  } = useExampleMessages();
+
   return (
-    <div className="h-full w-full max-w-xl p-8">
-      <h1 className="text-4xl font-bold mb-4">{pages.examples.shortName}</h1>
-      {/* temp */}
-      <p className="text-center">Will come later</p>
-    </div>
+    <MessagesBlock
+      title={pages.examples.shortName}
+      messages={exampleMessages}
+      messagesLoading={exampleMessagesLoading}
+      messagesErrorMessage={exampleMessagesErrorMessage}
+    />
   );
 }

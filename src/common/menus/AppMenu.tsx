@@ -7,6 +7,7 @@ import { useToggle } from '@/common/hooks/useToggle';
 
 import { LinkHelper } from '@/helpers/links/LinkHelper';
 import { BaseButtonHelper } from '@/helpers/buttons/BaseButtonHelper';
+import { AppMenuMyMessagesLink } from './AppMenuMyMessagesLink';
 
 import { AppPath } from '@/common/AppPath';
 import { pages } from '@/texts';
@@ -32,18 +33,16 @@ export function AppMenu() {
           text={pages.home.shortName}
           onClick={toggleMobileMenu}
         />
-        {/* <LinkHelper
+        <LinkHelper
           className="block p-4 md:p-4 lg:p-6 text-center text-gray-100 hover:bg-gray-100 hover:bg-opacity-10 uppercase"
           href={AppPath.examples()}
           text={pages.examples.shortName}
           onClick={toggleMobileMenu}
         />
-        <LinkHelper
+        <AppMenuMyMessagesLink
           className="block p-4 md:p-4 lg:p-6 text-center text-gray-100 hover:bg-gray-100 hover:bg-opacity-10 uppercase"
-          href={AppPath.myMessages()}
-          text={pages.myMessages.shortName}
           onClick={toggleMobileMenu}
-        /> */}
+        />
         <LinkHelper
           className="block p-4 md:p-4 lg:p-6 text-center text-gray-100 hover:bg-gray-100 hover:bg-opacity-10 uppercase"
           href={AppPath.howItWorks()}

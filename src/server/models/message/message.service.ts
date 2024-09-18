@@ -1,4 +1,4 @@
-import { DeleteResult } from 'typeorm';
+import { DeleteResult, FindManyOptions } from 'typeorm';
 import includes from 'lodash/includes';
 import isFinite from 'lodash/isFinite';
 import isEmpty from 'lodash/isEmpty';
@@ -22,14 +22,14 @@ const MessageOrderBySort: Record<string, Record<string, 'ASC' | 'DESC'>> = {
 const messageDefaultOrder = MessageOrderBySort.CREATED_AT_DESC;
 
 export class MessageService {
-  static async getRepository() {
+  static async _getRepository() {
     const connection = await DatabaseConnection.getDb();
     return connection.getRepository(Message);
   }
 
-  static async find(options: IndexQueryOptions): Promise<Message[]> {
-    const repository = await this.getRepository();
-
+  static _buildFindManyOptions(
+    options: IndexQueryOptions,
+  ): FindManyOptions<Message> {
     // TODO separate
     const where: Record<string, unknown> = {};
 
@@ -49,22 +49,38 @@ export class MessageService {
       ),
     );
 
-    return await repository.find({
+    return {
       where: isEmpty(where) ? undefined : where,
       skip:
         options.page && options.limit ? (options.page - 1) * options.limit : 0,
       take: min([options.limit || 1000, 1000]),
       order: isEmpty(order) ? messageDefaultOrder : order,
-    });
+    };
+  }
+
+  static async count(options: IndexQueryOptions): Promise<number> {
+    const repository = await this._getRepository();
+
+    const countOptions = this._buildFindManyOptions(options);
+
+    return await repository.count(countOptions);
+  }
+
+  static async find(options: IndexQueryOptions): Promise<Message[]> {
+    const repository = await this._getRepository();
+
+    const findOptions = this._buildFindManyOptions(options);
+
+    return await repository.find(findOptions);
   }
 
   static async findOne(id: number): Promise<Message | null> {
-    const repository = await this.getRepository();
+    const repository = await this._getRepository();
     return await repository.findOneBy({ id });
   }
 
   static async create(message: Message): Promise<Message> {
-    const repository = await this.getRepository();
+    const repository = await this._getRepository();
     return await repository.save(message);
   }
 
@@ -75,7 +91,7 @@ export class MessageService {
     id: number;
     userId: number;
   }): Promise<DeleteResult> {
-    const repository = await this.getRepository();
+    const repository = await this._getRepository();
     return await repository.delete({ id, user_id: userId });
   }
 }

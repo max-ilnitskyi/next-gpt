@@ -49,6 +49,7 @@ export const strings = {
   generatePositiveMessage: 'Generate positive message',
   generateACustomerMessage: 'Generate a customer message',
   orEnterYourOwnText: 'or enter your own text',
+  thereIsNoMessagesYet: 'There is no messages yet',
   aiPoweredToolForMonitoringEmotionalTone:
     'AI-powered tool for monitoring emotional tone',
   enterYourMessageHere: 'Enter your message here...',
