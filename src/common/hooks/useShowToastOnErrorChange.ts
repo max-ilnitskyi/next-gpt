@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import { toast } from 'react-toastify';
+
+import { Toast } from '@/utils/Toast';
 
 interface ShowToastOnErrorChangeOptions {
   error?: string | null;
@@ -15,9 +16,7 @@ export function useShowToastOnErrorChange({
       setPrevError(error || null);
 
       if (error) {
-        toast(error, {
-          type: 'error',
-        });
+        Toast.showError(error);
       }
     }
   }, [error, prevError, setPrevError]);

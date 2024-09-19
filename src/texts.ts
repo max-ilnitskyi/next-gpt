@@ -7,6 +7,7 @@ export const words = {
   unknown: 'Unknown',
   email: 'Email',
   phone: 'Phone',
+  copied: 'Copied',
 } as const;
 
 export const pages = {
