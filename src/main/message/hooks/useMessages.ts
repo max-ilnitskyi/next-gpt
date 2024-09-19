@@ -22,7 +22,7 @@ interface MessagesResponse {
 }
 
 const itemsKey = 'messages';
-const cacheKey = MessageCacheKey.index();
+export const cacheKey = MessageCacheKey.index();
 
 const params = {
   page: 1,

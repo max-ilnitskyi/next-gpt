@@ -6,6 +6,9 @@ import { processError } from '@/server/utils/exceptions/processError';
 import { BackendAuth } from '@/server/auth/BackendAuth';
 import { NotFoundException } from '@/server/utils/exceptions/NotFoundException';
 
+const notFoundMessage =
+  'Message not found or you are not authorized to delete this message';
+
 export async function DELETE(
   request: NextRequest,
   { params }: { params: { slug: string } },
@@ -19,9 +22,7 @@ export async function DELETE(
     });
 
     if (deleteResult.affected === 0) {
-      throw new NotFoundException(
-        'Message not found or you are not authorized to delete this message',
-      );
+      throw new NotFoundException(notFoundMessage, [notFoundMessage]);
     }
 
     return NextResponse.json({ success: true });

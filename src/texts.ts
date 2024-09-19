@@ -44,6 +44,9 @@ export const pages = {
 
 export const strings = {
   analyzeMessage: 'Analyze Message',
+  deleteMessage: 'Delete Message',
+  goToTheAnalyzer: 'go to the analyzer',
+  toggleMenu: 'Toggle menu',
   generateNegativeMessage: 'Generate negative message',
   generateNeutralMessage: 'Generate neutral message',
   generatePositiveMessage: 'Generate positive message',
