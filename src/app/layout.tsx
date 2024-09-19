@@ -14,8 +14,6 @@ const inter = Source_Code_Pro({ subsets: ['latin'] });
 export const metadata: Metadata = {
   title: pages.home.title,
   description: pages.home.description,
-  viewport:
-    'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no',
   icons: {
     icon: AppPublicIcons.icon(),
   },
@@ -27,10 +25,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html className="h-screen" lang="en">
+    <html className="h-full" lang="en">
       <body
         className={cl(
-          'h-screen relative overflow-hidden text-white',
+          'h-full relative overflow-hidden text-white',
           inter.className,
         )}
       >
