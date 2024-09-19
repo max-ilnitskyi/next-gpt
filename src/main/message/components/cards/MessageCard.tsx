@@ -47,7 +47,7 @@ export function MessageCard({
     >
       <div
         className={cl(
-          'relative bg-white text-gray-900 p-2 sm:p-6 rounded-lg shadow-lg w-full',
+          'relative bg-white text-gray-900 p-6 rounded-lg shadow-lg w-full',
           {
             'border-4':
               arousalClassification === MessageArousalClassification.LOW,
