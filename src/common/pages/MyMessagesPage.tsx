@@ -1,10 +1,14 @@
 'use client';
 import React from 'react';
 
-import { useMessages } from '@/main/message/hooks/useMessages';
+import { useMessages, cacheKey } from '@/main/message/hooks/useMessages';
 
 import { pages } from '@/texts';
 import { MessagesBlock } from '@/main/message/components/blocks/MessagesBlock';
+
+import { MessageCacheKey } from '@/main/message/MessageCacheKey';
+
+const cacheKeys = [cacheKey, MessageCacheKey.count()];
 
 export function MyMessagesPage() {
   const { messages, messagesLoading, messagesErrorMessage } = useMessages();
@@ -15,6 +19,8 @@ export function MyMessagesPage() {
       messages={messages}
       messagesLoading={messagesLoading}
       messagesErrorMessage={messagesErrorMessage}
+      withDeleteButton
+      cacheKeys={cacheKeys}
     />
   );
 }

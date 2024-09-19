@@ -10,7 +10,7 @@ import { BaseButtonHelper } from '@/helpers/buttons/BaseButtonHelper';
 import { AppMenuMyMessagesLink } from './AppMenuMyMessagesLink';
 
 import { AppPath } from '@/common/AppPath';
-import { pages } from '@/texts';
+import { pages, strings } from '@/texts';
 
 export function AppMenu() {
   const [showMobileMenu, toggleMobileMenu] = useToggle();
@@ -19,6 +19,7 @@ export function AppMenu() {
     <nav>
       <BaseButtonHelper className="block md:hidden" onClick={toggleMobileMenu}>
         <Bars3Icon className="h-12 w-12" />
+        <span className="sr-only">{strings.toggleMenu}</span>
       </BaseButtonHelper>
       <div
         className={cl(

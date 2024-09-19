@@ -6,6 +6,7 @@ import {
   MessageArousalClassification,
 } from '../../messageTypes';
 
+import { DeleteMessageButton } from '@/main/message/components/buttons/DeleteMessageButton';
 import { MessageDescription } from './MessageDescription';
 import { ValenceIcon } from '../ValenceIcon';
 import { BaseTooltipHelper } from '@/helpers/tooltips/BaseTooltipHelper';
@@ -22,9 +23,15 @@ interface MessageCardProps {
     arousal: number;
     createdAt: string;
   };
+  withDeleteButton?: boolean;
+  cacheKeys?: string[];
 }
 
-export function MessageCard({ message }: MessageCardProps) {
+export function MessageCard({
+  message,
+  withDeleteButton,
+  cacheKeys,
+}: MessageCardProps) {
   const { arousalClassification, valenceClassification } =
     classifyMessageValenceAndArousal(message);
 
@@ -63,6 +70,17 @@ export function MessageCard({ message }: MessageCardProps) {
           },
         )}
       >
+        {withDeleteButton ? (
+          <div className="absolute right-0 top-0">
+            <DeleteMessageButton
+              className="round rounded-full p-1 hover:scale-125"
+              iconClassName="size-6"
+              messageId={message.id}
+              cacheKeys={cacheKeys}
+            />
+          </div>
+        ) : null}
+
         {/* Message content */}
         <div className="w-full h-36 p-2 border border-gray-300 rounded overflow-y-auto">
           <span>{message.content}</span>
