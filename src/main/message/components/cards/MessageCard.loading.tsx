@@ -20,7 +20,7 @@ export function MessageCardLoading({
 
   return (
     <div className="w-full">
-      <div className="relative bg-white text-gray-900 p-2 sm:p-6 rounded-lg shadow-lg w-full border-8 border-gray-500">
+      <div className="relative bg-white text-gray-900 p-6 rounded-lg shadow-lg w-full border-8 border-gray-500">
         {/* Message content */}
         <div className="w-full h-36 p-2 border border-gray-300 rounded overflow-y-auto">
           <span>
