@@ -14,6 +14,8 @@ const inter = Source_Code_Pro({ subsets: ['latin'] });
 export const metadata: Metadata = {
   title: pages.home.title,
   description: pages.home.description,
+  viewport:
+    'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no',
   icons: {
     icon: AppPublicIcons.icon(),
   },
