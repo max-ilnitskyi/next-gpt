@@ -22,6 +22,7 @@ interface MessagesBlockProps {
   messagesLoading?: boolean;
   messagesErrorMessage?: string | null;
   withDeleteButton?: boolean;
+  loadingItemsCount?: number;
   cacheKeys?: string[];
 }
 
@@ -31,12 +32,16 @@ export function MessagesBlock({
   messagesLoading,
   messagesErrorMessage,
   withDeleteButton,
+  loadingItemsCount,
   cacheKeys,
 }: MessagesBlockProps) {
   return (
     <div>
       <h1 className="text-4xl font-bold mb-4 px-2 text-center">{title}</h1>
-      <MessagesListLoading loaded={!messagesLoading}>
+      <MessagesListLoading
+        loaded={!messagesLoading}
+        itemsCount={loadingItemsCount}
+      >
         <AlertMessage message={messagesErrorMessage} />
         {isEmpty(messages) && !messagesErrorMessage ? (
           <div className="text-center p-4">
