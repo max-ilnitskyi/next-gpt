@@ -18,7 +18,7 @@ interface MessagesCountResponse {
 }
 
 const itemsKey = 'messagesCount';
-const cacheKey = MessageCacheKey.count();
+export const cacheKey = MessageCacheKey.count();
 
 const persister: unknown = IS_CLIENT
   ? experimental_createPersister({ storage: localStorage })

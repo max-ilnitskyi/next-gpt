@@ -8,6 +8,9 @@ export class MessageApiPath {
   static delete(messageId: number) {
     return `messages/${messageId}`;
   }
+  static deleteAll() {
+    return `messages`;
+  }
   static example() {
     return 'messages/example_messages';
   }
