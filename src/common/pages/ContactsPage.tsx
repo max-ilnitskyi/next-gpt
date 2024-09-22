@@ -15,7 +15,7 @@ export function ContactsPage() {
       </p>
 
       <div className="">
-        <p className="text-lg mb-2 flex items-center">
+        <p className="text-lg mb-2 flex flex-wrap items-center">
           <strong>{words.email}:</strong>
           &nbsp;
           <a
@@ -28,7 +28,7 @@ export function ContactsPage() {
           <CopyToClipboardButtonHelper data={contactsData.email} />
         </p>
 
-        <p className="text-lg mb-2 flex items-center">
+        <p className="text-lg mb-2 flex flex-wrap items-center">
           <strong>{words.phone}:</strong>
           &nbsp;
           <a

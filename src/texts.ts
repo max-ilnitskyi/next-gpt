@@ -50,6 +50,7 @@ export const strings = {
   areYouSureYouWantToDeleteAllMessages:
     'Are you sure you want to delete all messages?',
   goToTheAnalyzer: 'go to the analyzer',
+  goToAllMessages: 'go to all messages',
   toggleMenu: 'Toggle menu',
   generateNegativeMessage: 'Generate negative message',
   generateNeutralMessage: 'Generate neutral message',

@@ -9,11 +9,14 @@ import { CreateMessageCardGenerateButtons } from './components/CreateMessageCard
 import { ButtonHelper } from '@/helpers/buttons/ButtonHelper';
 import { AlertMessage } from '@/helpers/AlertMessage';
 import { Loading } from '@/helpers/Loading';
+import { LinkHelper } from '@/helpers/links/LinkHelper';
 
+import { AppPath } from '@/common/AppPath';
 import { strings, words } from '@/texts';
 
 export function CreateMessageCard() {
   const {
+    messagesCount,
     text,
     message,
     createMessageErrorMessage,
@@ -85,6 +88,15 @@ export function CreateMessageCard() {
             text={words.reset}
             onClick={resetCreateMessage}
           />
+          {messagesCount > 1 ? (
+            <div className="p-4 text-center">
+              <LinkHelper
+                className="underline hover:no-underline text-gray-400 text-lg font-bold"
+                text={`${strings.goToAllMessages} (${messagesCount})`}
+                href={AppPath.myMessages()}
+              />
+            </div>
+          ) : null}
         </>
       ) : null}
     </div>

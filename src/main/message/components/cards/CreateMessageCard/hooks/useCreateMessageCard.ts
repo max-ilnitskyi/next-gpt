@@ -1,10 +1,14 @@
 import React, { useCallback, useState } from 'react';
 
 import { useCreateMessage } from '@/main/message/hooks/useCreateMessage';
-import { useCreateMessageCardGenerateContent } from './useCreateMessageCardGenerateContent';
-import { MessageCacheKey } from '@/main/message/MessageCacheKey';
+import {
+  useMessagesCount,
+  cacheKey,
+} from '@/main/message/hooks/useMessagesCount';
 
-const cacheKeys = [MessageCacheKey.count()];
+import { useCreateMessageCardGenerateContent } from './useCreateMessageCardGenerateContent';
+
+const cacheKeys = [cacheKey];
 
 export function useCreateMessageCard() {
   const [text, setText] = useState<string>('');
@@ -51,7 +55,10 @@ export function useCreateMessageCard() {
     handleGenerateNegativeMessageContent,
   } = useCreateMessageCardGenerateContent({ afterSuccess: setText });
 
+  const { messagesCount } = useMessagesCount();
+
   return {
+    messagesCount,
     text,
     message,
     handleAnalyzeMessage,
