@@ -2,16 +2,20 @@
 import React from 'react';
 
 import { useMessages, cacheKey } from '@/main/message/hooks/useMessages';
+import {
+  useMessagesCount,
+  cacheKey as countCacheKey,
+} from '@/main/message/hooks/useMessagesCount';
 
 import { pages } from '@/texts';
 import { MessagesBlock } from '@/main/message/components/blocks/MessagesBlock';
 
-import { MessageCacheKey } from '@/main/message/MessageCacheKey';
-
-const cacheKeys = [cacheKey, MessageCacheKey.count()];
+const cacheKeys = [cacheKey, countCacheKey];
 
 export function MyMessagesPage() {
   const { messages, messagesLoading, messagesErrorMessage } = useMessages();
+
+  const { messagesCount } = useMessagesCount();
 
   return (
     <MessagesBlock
@@ -20,6 +24,7 @@ export function MyMessagesPage() {
       messagesLoading={messagesLoading}
       messagesErrorMessage={messagesErrorMessage}
       withDeleteButton
+      withDeleteAllButton={!!messagesCount}
       cacheKeys={cacheKeys}
       loadingItemsCount={2}
     />

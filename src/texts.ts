@@ -46,6 +46,9 @@ export const pages = {
 export const strings = {
   analyzeMessage: 'Analyze Message',
   deleteMessage: 'Delete Message',
+  clearAll: 'clear all',
+  areYouSureYouWantToDeleteAllMessages:
+    'Are you sure you want to delete all messages?',
   goToTheAnalyzer: 'go to the analyzer',
   toggleMenu: 'Toggle menu',
   generateNegativeMessage: 'Generate negative message',
@@ -62,6 +65,8 @@ export const strings = {
   currentValue: 'Current value',
   ifYouHaveAnyQuestionsOrWantToLearnMore:
     'If you have any questions or would like to learn more about our AI-powered emotional analysis tool, feel free to contact us.',
+  yesImSure: "Yes, I'm sure",
+  noCancel: 'No, cancel',
   arousalClassification: {
     low: 'The message has a low level of emotional intensity. This typically indicates calmness, relaxation, or a lack of strong emotional engagement.',
     medium:

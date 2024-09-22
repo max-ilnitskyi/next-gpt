@@ -94,4 +94,13 @@ export class MessageService {
     const repository = await this._getRepository();
     return await repository.delete({ id, user_id: userId });
   }
+
+  static async deleteAll({
+    userId,
+  }: {
+    userId: number;
+  }): Promise<DeleteResult> {
+    const repository = await this._getRepository();
+    return await repository.delete({ user_id: userId });
+  }
 }

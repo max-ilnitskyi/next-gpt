@@ -69,3 +69,17 @@ export async function POST(request: NextRequest) {
     return processError({ error: error as Error });
   }
 }
+
+export async function DELETE() {
+  try {
+    const { currentUserId } = await BackendAuth.getCurrentUserIdRequired();
+
+    await MessageService.deleteAll({
+      userId: currentUserId,
+    });
+
+    return NextResponse.json({ success: true });
+  } catch (error) {
+    return processError({ error: error as Error });
+  }
+}
