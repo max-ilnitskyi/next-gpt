@@ -41,8 +41,8 @@ export function MessagesBlock({
 }: MessagesBlockProps) {
   return (
     <div>
-      <div className="flex items-center justify-between">
-        <h1 className="text-4xl font-bold mb-4 px-2 text-center">{title}</h1>
+      <div className="flex flex-wrap items-center justify-between mb-2 sm:mb-4">
+        <h1 className="text-4xl font-bold mb-2 px-2 text-center">{title}</h1>
         {withDeleteAllButton ? (
           <DeleteAllMessagesConfirmButton
             className="mr-2 flex items-center text-red-700 hover:text-white border border-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-2.5 py-1.5 text-center dark:border-red-500 dark:text-red-500 dark:hover:text-white dark:hover:bg-red-600 dark:focus:ring-red-900"
