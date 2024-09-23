@@ -1,4 +1,4 @@
-import { Entity, Column, ManyToOne, JoinColumn } from 'typeorm';
+import { Entity, Column, ManyToOne, JoinColumn, AfterLoad } from 'typeorm';
 
 import { MessageTypes } from './message.types';
 import { DatabaseTables } from '@/server/database/database.types';
@@ -38,4 +38,11 @@ export class Message extends BaseEntity {
     default: MessageTypes.USER_MESSAGE,
   })
   type!: MessageTypes;
+
+  // TODO try migrating this
+  @AfterLoad()
+  updateValenceArousal() {
+    this.valence = parseFloat(this.valence as unknown as string);
+    this.arousal = parseFloat(this.arousal as unknown as string);
+  }
 }
