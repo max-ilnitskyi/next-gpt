@@ -1,10 +1,10 @@
 import {
   MessageValenceClassification,
   MessageArousalClassification,
-} from '../messageTypes';
+} from '@/main/message/messageTypes';
 
-import { classifyMessageArousal } from './classifyMessageArousal';
-import { classifyMessageValence } from './classifyMessageValence';
+import { classifyMessageArousal } from '@/main/message/utils/classifyMessageArousal';
+import { classifyMessageValence } from '@/main/message/utils/classifyMessageValence';
 
 interface ClassifyMessageValenceAndArousalMessage {
   valence: number;
