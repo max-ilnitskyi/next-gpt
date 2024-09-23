@@ -26,7 +26,7 @@ export function MyMessagesPage() {
       withDeleteButton
       withDeleteAllButton={!!messagesCount}
       cacheKeys={cacheKeys}
-      loadingItemsCount={2}
+      loadingItemsCount={messagesCount || 4}
     />
   );
 }
