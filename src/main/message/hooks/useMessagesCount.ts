@@ -1,11 +1,10 @@
 import { useCallback } from 'react';
 import { useQuery, QueryPersister } from '@tanstack/react-query';
-import isEmpty from 'lodash/isEmpty';
 import { experimental_createPersister } from '@tanstack/query-persist-client-core';
 
-import { AxiosRequestErrorType, PayloadErrorType } from '@/types';
-import ApiRequest from '@/utils/ApiRequest';
 import parseRequestError from '@/utils/parseRequestError/parseRequestError';
+
+import { baseGetAction } from '@/common/actions/baseGetAction';
 
 import { MessageCacheKey } from '../MessageCacheKey';
 import { MessageApiPath } from '../MessageApiPath';
@@ -25,24 +24,10 @@ const persister: unknown = IS_CLIENT
   : undefined;
 
 export function useMessagesCount() {
-  const queryFn = useCallback<
-    () => Promise<MessagesCountResponse>
-  >(async () => {
-    try {
-      const response = await ApiRequest.get<MessagesCountResponse>(
-        MessageApiPath.count(),
-      );
-
-      return response.data;
-    } catch (err) {
-      throw isEmpty(
-        (err as AxiosRequestErrorType<PayloadErrorType>)?.response?.data?.error
-          ?.fullMessages,
-      )
-        ? err
-        : (err as AxiosRequestErrorType<PayloadErrorType>)?.response?.data
-            ?.error;
-    }
+  const queryFn = useCallback<() => Promise<MessagesCountResponse>>(() => {
+    return baseGetAction<MessagesCountResponse>({
+      path: MessageApiPath.count(),
+    });
   }, []);
 
   const queryKey = [cacheKey];

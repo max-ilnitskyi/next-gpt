@@ -1,10 +1,9 @@
 import { useCallback } from 'react';
 import { useQuery } from '@tanstack/react-query';
-import isEmpty from 'lodash/isEmpty';
 
-import { AxiosRequestErrorType, PayloadErrorType } from '@/types';
-import ApiRequest from '@/utils/ApiRequest';
 import parseRequestError from '@/utils/parseRequestError/parseRequestError';
+
+import { baseGetAction } from '@/common/actions/baseGetAction';
 
 import { MessageCacheKey } from '../MessageCacheKey';
 import { MessageApiPath } from '../MessageApiPath';
@@ -35,22 +34,10 @@ export function useExampleMessages() {
   const queryFn = useCallback<
     () => Promise<ExampleMessagesResponse>
   >(async () => {
-    try {
-      const response = await ApiRequest.get<ExampleMessagesResponse>(
-        MessageApiPath.example(),
-        params,
-      );
-
-      return response.data;
-    } catch (err) {
-      throw isEmpty(
-        (err as AxiosRequestErrorType<PayloadErrorType>)?.response?.data?.error
-          ?.fullMessages,
-      )
-        ? err
-        : (err as AxiosRequestErrorType<PayloadErrorType>)?.response?.data
-            ?.error;
-    }
+    return baseGetAction<ExampleMessagesResponse>({
+      path: MessageApiPath.example(),
+      params,
+    });
   }, []);
 
   const { data, isFetched, isLoading, error } =
