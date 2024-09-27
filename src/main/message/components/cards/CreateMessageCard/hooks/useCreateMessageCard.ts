@@ -3,12 +3,13 @@ import React, { useCallback, useState } from 'react';
 import { useCreateMessage } from '@/main/message/hooks/useCreateMessage';
 import {
   useMessagesCount,
-  cacheKey,
+  cacheKey as messagesCountCacheKey,
 } from '@/main/message/hooks/useMessagesCount';
+import { cacheKey as messagesCacheKey } from '@/main/message/hooks/useMessages';
 
 import { useCreateMessageCardGenerateContent } from './useCreateMessageCardGenerateContent';
 
-const cacheKeys = [cacheKey];
+const cacheKeys = [messagesCountCacheKey, messagesCacheKey];
 
 export function useCreateMessageCard() {
   const [text, setText] = useState<string>('');
