@@ -5,7 +5,7 @@ import { MessageService } from '@/server/models/message/message.service';
 import { processError } from '@/server/utils/exceptions/processError';
 import { BackendAuth } from '@/server/auth/BackendAuth';
 import { ParseIndexQuery } from '@/server/utils/ParseIndexQuery';
-import { MessageTypes } from '@/server/models/message/message.types';
+import { ResponseFormatter } from '@/server/utils/ResponseFormatter';
 
 const scope = 'messagesCount';
 
@@ -14,22 +14,17 @@ export async function GET(request: NextRequest) {
     const { currentUserId } = await BackendAuth.getCurrentUserId();
 
     if (!currentUserId) {
-      return NextResponse.json({ success: true, [scope]: { count: 0 } });
+      return NextResponse.json(ResponseFormatter.count({ count: 0, scope }));
     }
 
     const options = new ParseIndexQuery(request).parse();
 
-    const hardFilters = {
+    const count = await MessageService.userMessagesCount({
       userId: currentUserId,
-      type: MessageTypes.USER_MESSAGE,
-    };
-
-    const count = await MessageService.count({
-      ...options,
-      filters: { ...options.filters, ...hardFilters },
+      options,
     });
 
-    return NextResponse.json({ success: true, [scope]: { count } });
+    return NextResponse.json(ResponseFormatter.count({ count, scope }));
   } catch (error) {
     return processError({ error: error as Error });
   }

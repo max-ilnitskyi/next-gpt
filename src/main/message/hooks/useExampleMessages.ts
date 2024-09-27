@@ -7,6 +7,7 @@ import { baseGetAction } from '@/common/actions/baseGetAction';
 
 import { MessageCacheKey } from '../MessageCacheKey';
 import { MessageApiPath } from '../MessageApiPath';
+import { EXAMPLE_MESSAGES_DEFAULT_PARAMS } from '../messageConstants';
 
 interface ExampleMessagesResponse {
   messages: {
@@ -23,12 +24,7 @@ interface ExampleMessagesResponse {
 const itemsKey = 'messages';
 const cacheKey = MessageCacheKey.example();
 
-const params = {
-  page: 1,
-  limit: 24,
-  filters: {},
-  sort: ['CREATED_AT_DESC'],
-};
+const params = EXAMPLE_MESSAGES_DEFAULT_PARAMS;
 
 export function useExampleMessages() {
   const queryFn = useCallback<

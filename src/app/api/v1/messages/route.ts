@@ -10,6 +10,7 @@ import { ServerException } from '@/server/utils/exceptions/ServerException';
 import { BackendAuth } from '@/server/auth/BackendAuth';
 import { ParseIndexQuery } from '@/server/utils/ParseIndexQuery';
 import { MessageTypes } from '@/server/models/message/message.types';
+import { ResponseFormatter } from '@/server/utils/ResponseFormatter';
 
 const scope = 'messages';
 const scopeSingular = 'message';
@@ -34,7 +35,9 @@ export async function GET(request: NextRequest) {
       filters: { ...options.filters, ...hardFilters },
     });
 
-    return NextResponse.json({ success: true, [scope]: { nodes: response } });
+    return NextResponse.json(
+      ResponseFormatter.index({ scope, nodes: response }),
+    );
   } catch (error) {
     return processError({ error: error as Error });
   }

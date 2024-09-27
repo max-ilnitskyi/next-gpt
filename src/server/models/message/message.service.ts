@@ -66,6 +66,24 @@ export class MessageService {
     return await repository.count(countOptions);
   }
 
+  static async userMessagesCount({
+    userId,
+    options,
+  }: {
+    userId: number;
+    options?: IndexQueryOptions;
+  }): Promise<number> {
+    const hardFilters = {
+      userId,
+      type: MessageTypes.USER_MESSAGE,
+    };
+
+    return await this.count({
+      ...options,
+      filters: { ...options?.filters, ...hardFilters },
+    });
+  }
+
   static async find(options: IndexQueryOptions): Promise<Message[]> {
     const repository = await this._getRepository();
 

@@ -7,6 +7,7 @@ import { baseGetAction } from '@/common/actions/baseGetAction';
 
 import { MessageCacheKey } from '../MessageCacheKey';
 import { MessageApiPath } from '../MessageApiPath';
+import { MY_MESSAGES_DEFAULT_PARAMS } from '../messageConstants';
 
 interface MessagesResponse {
   messages: {
@@ -23,12 +24,7 @@ interface MessagesResponse {
 const itemsKey = 'messages';
 export const cacheKey = MessageCacheKey.index();
 
-const params = {
-  page: 1,
-  limit: 1000,
-  filters: {},
-  sort: ['CREATED_AT_DESC'],
-};
+const params = MY_MESSAGES_DEFAULT_PARAMS;
 
 export function useMessages() {
   const queryFn = useCallback<() => Promise<MessagesResponse>>(async () => {
