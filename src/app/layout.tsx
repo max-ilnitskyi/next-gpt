@@ -4,6 +4,8 @@ import { Source_Code_Pro } from 'next/font/google';
 
 import { AppLayout } from '@/common/layouts/AppLayout';
 import { AppProvider } from '@/common/AppProvider';
+import { appRQPrefetch } from '@/common/prefetch/appRQPrefetch';
+import { ReactQueryPrefetch } from '@/common/ReactQueryPrefetch';
 
 import { AppPublicIcons } from '@/common/AppPublicIcons';
 import { pages } from '@/texts';
@@ -33,7 +35,9 @@ export default function RootLayout({
         )}
       >
         <AppProvider>
-          <AppLayout>{children}</AppLayout>
+          <ReactQueryPrefetch prefetch={appRQPrefetch}>
+            <AppLayout>{children}</AppLayout>
+          </ReactQueryPrefetch>
         </AppProvider>
       </body>
     </html>

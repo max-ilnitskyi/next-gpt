@@ -1,3 +1,4 @@
+'use client';
 import axios from 'axios';
 import join from 'lodash/join';
 import compact from 'lodash/compact';
