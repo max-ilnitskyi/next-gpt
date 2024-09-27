@@ -16,7 +16,6 @@ export async function ReactQueryPrefetch({
   prefetch,
   children,
 }: ReactQueryPrefetchProps) {
-  return <>{children}</>;
   const queryClient = AppQueryClient.get();
 
   await prefetch(queryClient);
