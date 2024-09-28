@@ -55,7 +55,8 @@ export const strings = {
   generateNegativeMessage: 'Generate negative message',
   generateNeutralMessage: 'Generate neutral message',
   generatePositiveMessage: 'Generate positive message',
-  generateACustomerMessage: 'Generate a customer message',
+  clickAnEmojiToGenerateACustomerMessage:
+    'Click an emoji to generate a customer message',
   orEnterYourOwnText: 'or enter your own text',
   thereIsNoMessagesYet: 'There is no messages yet',
   aiPoweredToolForMonitoringEmotionalTone:

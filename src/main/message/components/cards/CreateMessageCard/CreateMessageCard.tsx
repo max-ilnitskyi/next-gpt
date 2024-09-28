@@ -37,7 +37,7 @@ export function CreateMessageCard() {
       {!message ? (
         <div className="bg-white text-gray-900 p-2 sm:p-6 rounded-lg shadow-lg w-full">
           <div className="text-center text-lg font-semibold">
-            {strings.generateACustomerMessage}
+            {strings.clickAnEmojiToGenerateACustomerMessage}
           </div>
           <CreateMessageCardGenerateButtons
             isPending={generateMessageContentPending}
