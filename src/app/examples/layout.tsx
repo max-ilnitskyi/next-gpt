@@ -1,9 +1,6 @@
 import type { Metadata } from 'next';
 
 import { ContentLayout } from '@/common/layouts/ContentLayout';
-import { ReactQueryPrefetch } from '@/common/ReactQueryPrefetch';
-
-import { examplesRQPrefetch } from '@/common/prefetch/examplesRQPrefetch';
 
 import { pages } from '@/texts';
 
@@ -17,11 +14,5 @@ export default function ExamplesLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return (
-    <ContentLayout>
-      <ReactQueryPrefetch prefetch={examplesRQPrefetch}>
-        {children}
-      </ReactQueryPrefetch>
-    </ContentLayout>
-  );
+  return <ContentLayout>{children}</ContentLayout>;
 }
