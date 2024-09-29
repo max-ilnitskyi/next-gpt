@@ -10,6 +10,8 @@ import { ResponseFormatter } from '@/server/utils/ResponseFormatter';
 const scope = 'messages';
 const hardFilters = { type: MessageTypes.EXAMPLE };
 
+export const dynamic = 'force-static';
+
 export async function GET(request: NextRequest) {
   try {
     const options = new ParseIndexQuery(request).parse();
