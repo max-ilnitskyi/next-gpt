@@ -6,7 +6,7 @@ import {
 import { classifyMessageArousal } from '@/main/message/utils/classifyMessageArousal';
 import { classifyMessageValence } from '@/main/message/utils/classifyMessageValence';
 
-interface ClassifyMessageValenceAndArousalMessage {
+export interface ClassifyMessageValenceAndArousalMessage {
   valence: number;
   arousal: number;
 }
