@@ -5,7 +5,7 @@ import forEach from 'lodash/forEach';
 import isArray from 'lodash/isArray';
 
 import { AxiosRequestErrorType, PayloadErrorType } from '@/types';
-import ApiRequest from '@/utils/ApiRequest';
+import { ApiRequest } from '@/utils/ApiRequest';
 import parseRequestError from '@/utils/parseRequestError/parseRequestError';
 
 import { MessageApiPath } from '../MessageApiPath';

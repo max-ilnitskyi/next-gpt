@@ -5,7 +5,7 @@ import isEmpty from 'lodash/isEmpty';
 import { AxiosRequestErrorType, PayloadErrorType } from '@/types';
 import { SyncStorage } from '@/utils/SyncStorage';
 import { getQueryPlaceholderKey } from '@/utils/getQueryPlaceholderKey';
-import ApiRequest from '@/utils/ApiRequest';
+import { ApiRequest } from '@/utils/ApiRequest';
 import parseRequestError from '@/utils/parseRequestError/parseRequestError';
 
 import { AuthCacheKey } from '../AuthCacheKey';

@@ -1,6 +1,6 @@
 import isEmpty from 'lodash/isEmpty';
 
-import ApiRequest from '@/utils/ApiRequest';
+import { ApiRequest } from '@/utils/ApiRequest';
 import { AxiosRequestErrorType, PayloadErrorType } from '@/types';
 
 interface BaseGetActionOptions {

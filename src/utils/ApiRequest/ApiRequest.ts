@@ -29,7 +29,7 @@ function headers(additionalHeaders?: Record<string, string | number>) {
   };
 }
 
-class ApiRequest {
+export class ApiRequest {
   static _url(path: string) {
     return [apiUrl, path].join('/');
   }
@@ -69,5 +69,3 @@ class ApiRequest {
     });
   }
 }
-
-export default ApiRequest;
