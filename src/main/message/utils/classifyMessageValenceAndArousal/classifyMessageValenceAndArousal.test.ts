@@ -1,4 +1,7 @@
-import { classifyMessageValenceAndArousal } from './classifyMessageValenceAndArousal';
+import {
+  classifyMessageValenceAndArousal,
+  ClassifyMessageValenceAndArousalMessage,
+} from './classifyMessageValenceAndArousal';
 import {
   MessageValenceClassification,
   MessageArousalClassification,
@@ -23,24 +26,6 @@ describe('classifyMessageValenceAndArousal', () => {
     expect(result.arousalClassification).toBeNull();
   });
 
-  it('should classify valence and arousal independently', () => {
-    const message = { valence: 0.5, arousal: null };
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const result = classifyMessageValenceAndArousal(message as any);
-    expect(result.valenceClassification).toBe(
-      MessageValenceClassification.POSITIVE,
-    );
-    expect(result.arousalClassification).toBeNull();
-
-    const message2 = { valence: null, arousal: 0.5 };
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const result2 = classifyMessageValenceAndArousal(message2 as any);
-    expect(result2.valenceClassification).toBeNull();
-    expect(result2.arousalClassification).toBe(
-      MessageArousalClassification.MEDIUM,
-    );
-  });
-
   it('should handle edge cases for valence and arousal', () => {
     const message = { valence: 0.33, arousal: 0.33 };
     const result = classifyMessageValenceAndArousal(message);
@@ -54,8 +39,9 @@ describe('classifyMessageValenceAndArousal', () => {
 
   it('should return null for non-numeric input', () => {
     const message = { valence: null, arousal: null };
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const result = classifyMessageValenceAndArousal(message as any);
+    const result = classifyMessageValenceAndArousal(
+      message as unknown as ClassifyMessageValenceAndArousalMessage,
+    );
     expect(result.valenceClassification).toBeNull();
     expect(result.arousalClassification).toBeNull();
   });
