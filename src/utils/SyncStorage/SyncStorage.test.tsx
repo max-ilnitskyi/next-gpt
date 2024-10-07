@@ -1,4 +1,3 @@
-// SyncStorage.test.ts
 import { SyncStorage } from './SyncStorage';
 
 describe('SyncStorage', () => {

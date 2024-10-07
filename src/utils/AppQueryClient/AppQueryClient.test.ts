@@ -1,4 +1,3 @@
-// AppQueryClient.test.ts
 import { AppQueryClient } from './AppQueryClient';
 import * as ReactQueryModule from '@tanstack/react-query';
 

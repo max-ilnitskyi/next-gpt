@@ -1,5 +1,5 @@
 import React, { memo } from 'react';
-import { BaseLinkHelper } from './BaseLinkHelper';
+import { BaseLinkHelper } from '../BaseLinkHelper';
 
 interface LinkHelperProps {
   className?: string;

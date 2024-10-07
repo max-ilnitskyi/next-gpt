@@ -1,7 +1,7 @@
 import React, { ReactNode } from 'react';
 import Link from 'next/link';
 
-interface BaseLinkHelperProps {
+export interface BaseLinkHelperProps {
   className?: string;
   href: string;
   children?: ReactNode;
